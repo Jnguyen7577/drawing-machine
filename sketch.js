@@ -2,15 +2,16 @@ let array = [];
 
 function setup() {
   createCanvas(600, 600);
-  background(220);
+  background(255);
 
   strokeWeight(7);
-
+  noFill();
 }
 
 function draw() {
 
 if (mouseIsPressed){
+	background(0);
 	//stroke(map(mouseX, 0, 600, 0, 255, true))
 	//line(width - mouseX, height - mouseY, width - pmouseX, height - pmouseY);
 	//line(mouseX, mouseY, pmouseX, pmouseY);
@@ -28,15 +29,23 @@ function keyTyped(){
 		//display image
 		//console.log(array[0]);
 		//console.log(array[0][1]);
+		background(255);
+
+
+		beginShape();
 		for(let i = 0; i < array.length - 1; i++){
-			line(array[i][0], array[i][1], array[i + 1][0], array[i + 1][1]);
+			//line(array[i][0], array[i][1], array[i + 1][0], array[i + 1][1]);
+			curveVertex(array[i][0], array[i][1])
 		}
+		endShape();
 
 		
 
 
 	}
 
-	}
+	
 
 	return false;
+}
+
