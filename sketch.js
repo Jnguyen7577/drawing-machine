@@ -1,18 +1,26 @@
 let array = [];
 let backgroundColor = 200;
+let noiseOffset = 0.0;
+let strokeWidth = 7;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   //background(backgroundColor);
   background(220, 50, 133);
 
-  strokeWeight(7);
+  //strokeWeight(strokeWeight);
   noFill();
 }
 
 function draw() {
 
 	background(220, 50, 133, 5);
+	strokeWeight(strokeWidth);
+
+	noiseOffset += 0.05;
+	strokeWidth = noise(noiseOffset) * 100;
+
+
 
 //if (mouseIsPressed){
 	
@@ -39,7 +47,9 @@ function keyTyped(){
 	if (key === 's'){
 		//save image
 		saveCanvas('fileName', 'png');
-	}else if (key === 'd'){
+	}else if (key === 'c'){
+		clear();
+
 		//display image
 		//console.log(array[0]);
 		//console.log(array[0][1]);
