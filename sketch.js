@@ -3,7 +3,8 @@ let backgroundColor = 200;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  background(backgroundColor);
+  //background(backgroundColor);
+  background(220, 50, 133);
 
   strokeWeight(7);
   noFill();
@@ -11,13 +12,17 @@ function setup() {
 
 function draw() {
 
-if (mouseIsPressed){
-	backgroundColor -= 5;
-	background(backgroundColor);
-	//stroke(map(mouseX, 0, 600, 0, 255, true))
-	//line(width - mouseX, height - mouseY, width - pmouseX, height - pmouseY);
-	//line(mouseX, mouseY, pmouseX, pmouseY);
-	array.push([mouseX, mouseY]);
+	background(220, 50, 133, 5);
+
+//if (mouseIsPressed){
+	
+	//backgroundColor -= 5;
+	//background(backgroundColor);
+	
+	stroke(map(mouseX, 0, 600, 0, 255, true))
+	line(width - mouseX, height - mouseY, width - pmouseX, height - pmouseY);
+	line(mouseX, mouseY, pmouseX, pmouseY);
+	//array.push([mouseX, mouseY]);
 
 beginShape();
 		for(let i = 0; i < array.length - 1; i++){
@@ -27,7 +32,7 @@ beginShape();
 		endShape();	
 }
   
-}
+//}
 
 function keyTyped(){
 
