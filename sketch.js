@@ -1,79 +1,61 @@
 let array = [];
 let backgroundColor = 200;
-let noiseOffset = 0.0;
-let strokeWidth = 7;
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(windowWidth, windowHeight );
   //background(backgroundColor);
-  background(220, 50, 133);
+  drawGrid();
 
-  //strokeWeight(strokeWeight);
   noFill();
+  strokeWeight(7);
 }
 
 function draw() {
-
-	background(220, 50, 133, 5);
-	strokeWeight(strokeWidth);
-
-	noiseOffset += 0.05;
-	strokeWidth = noise(noiseOffset) * 100;
-
-
-
-//if (mouseIsPressed){
-	
-	//backgroundColor -= 5;
-	//background(backgroundColor);
-	
-	stroke(map(mouseX, 0, 600, 0, 255, true))
-	line(width - mouseX, height - mouseY, width - pmouseX, height - pmouseY);
-	line(mouseX, mouseY, pmouseX, pmouseY);
-	//array.push([mouseX, mouseY]);
-
-beginShape();
-		for(let i = 0; i < array.length - 1; i++){
-			//line(array[i][0], array[i][1], array[i + 1][0], array[i + 1][1]);
-			curveVertex(array[i][0], array[i][1])
-		}
-		endShape();	
-}
   
-//}
-
-function keyTyped(){
-
-	if (key === 's'){
-		//save image
-		saveCanvas('fileName', 'png');
-	}else if (key === 'c'){
-		clear();
-
-		//display image
-		//console.log(array[0]);
-		//console.log(array[0][1]);
-		background(255);
-
-
-		beginShape();
-		for(let i = 0; i < array.length - 1; i++){
-			//line(array[i][0], array[i][1], array[i + 1][0], array[i + 1][1]);
-			curveVertex(array[i][0], array[i][1])
-		}
-		endShape();
-
-		
-
-
-	}
-
-	
-
-	return false;
+  if (mouseIsPressed) {
+    
+    backgroundColor -= 5;
+    background(backgroundColor);
+    stroke(map(mouseX, 0, 600, 0, 237, true));
+    //line(width - mouseX, height - mouseY, width - pmouseX, height - pmouseY);
+    //line(mouseX, mouseY, pmouseX, pmouseY);
+    array.push([mouseX, mouseY])
+  }
 }
 
-function mousePressed() {
-	array = [];
-	backgroundColor = 255;
+function keyTyped() {
+
+  //save image
+  if (key === 's') {
+    saveCanvas('fileName', 'png');
+  } else if (key === 'd') {
+    //display image
+    background(255);
+    beginShape();
+    for (let i = 0; i < array.length; i++) {
+      //  line(array[i][0], array[i][1], array[i + 1][0], array[i + 1][1]);
+      curveVertex(array[i][0], array[i][1]);
+    }
+    endShape();
+  
+  return false;
+}
+
+function drawGrid(){
+  numCells = 20;
+  fillColor = 255;
+  strokeWeight(0);
+
+  for (let i = 0; i <= width; i += width / numCells){
+    for (let j = 0; j <= height; j += height / numCells){
+      if (fillColor === 255){
+        fillColor = 200;
+      } else {
+        fillColor = 255;
+      }
+      fill(fillColor);
+    rect(i, j, width / numCells, height / numCells);
+  }
+}
+}
 }
