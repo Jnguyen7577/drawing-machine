@@ -4,7 +4,7 @@ let backgroundColor = 200;
 function setup() {
   createCanvas(windowWidth, windowHeight );
   //background(backgroundColor);
-  drawGrid();
+  //drawGrid();
 
   noFill();
   strokeWeight(7);
